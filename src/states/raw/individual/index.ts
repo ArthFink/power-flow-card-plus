@@ -11,6 +11,10 @@ export const getIndividualState = (hass: HomeAssistant, field: IndividualDeviceT
 
   const individualStateWatts = getEntityStateWatts(hass, entity);
 
+  if (field.producer == true){
+    return -Math.abs(individualStateWatts);
+  }
+
   return Math.abs(individualStateWatts);
 };
 
